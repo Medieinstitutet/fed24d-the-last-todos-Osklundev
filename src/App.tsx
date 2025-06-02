@@ -10,9 +10,9 @@ function App() {
     new Todo("Tvätta", true),
   ]);
 
-  const addTodo = (t: Todo) => {
-    setTodos([...todos, t]);
-  };
+  // const addTodo = (t: Todo) => {
+  //   setTodos([...todos, t]);
+  // };
 
   const completeTodo = (id: number) => {
     setTodos(
