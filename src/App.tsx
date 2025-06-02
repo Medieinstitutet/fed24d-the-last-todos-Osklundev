@@ -1,14 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { Todo } from "./models/Todo";
 import { Todos } from "./components/Todos";
 
 function App() {
-  const [todos, setTodos] = useState<Todo[]>([
-    new Todo("Diska", true),
-    new Todo("Städa", false),
-    new Todo("Tvätta", true),
-  ]);
+  const loadTodos = (): Todo[] => {
+    const saved = localStorage.getItem("todos");
+    if (!saved) {
+      console.log("not saved");
+
+      return [
+        new Todo("Diska", true),
+        new Todo("Städa", false),
+        new Todo("Tvätta", true),
+      ];
+    }
+    console.log("loading localstorage");
+
+    const parsed: Todo[] = JSON.parse(saved);
+
+    return parsed.map((t) => new Todo(t.content, t.isDone));
+  };
+  const [todos, setTodos] = useState<Todo[]>(loadTodos);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   // const addTodo = (t: Todo) => {
   //   setTodos([...todos, t]);
