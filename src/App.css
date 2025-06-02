@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 }
+
+.flexList {
+  display: flex;
+  gap: 1rem;
+}
