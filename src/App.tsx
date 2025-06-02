@@ -25,9 +25,17 @@ function App() {
     );
   };
 
+  const removeTodo = (id: number) => {
+    setTodos(todos.filter((t) => t.id !== id));
+  };
+
   return (
     <>
-      <Todos todos={todos} completeTodo={completeTodo} />
+      <Todos
+        todos={todos}
+        completeTodo={completeTodo}
+        removeTodo={removeTodo}
+      />
     </>
   );
 }
