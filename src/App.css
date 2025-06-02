@@ -44,4 +44,11 @@
 .flexList {
   display: flex;
   gap: 1rem;
+  color: red;
+  font-weight: bold;
+}
+
+.done {
+  text-decoration: line-through;
+  color: rgb(0, 255, 0);
 }

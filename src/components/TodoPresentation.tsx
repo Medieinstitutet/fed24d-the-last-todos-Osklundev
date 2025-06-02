@@ -1,14 +1,20 @@
+import type { Todo } from "../models/Todo";
+
 type TodoProps = {
-  content: string;
-  done: boolean;
+  todo: Todo;
+  completeTodo: (id: number) => void;
 };
 
-export const TodoPresentation = ({ content, done }: TodoProps) => {
+export const TodoPresentation = ({ todo, completeTodo }: TodoProps) => {
   return (
     <>
-      <li className="flexList">
-        <p>{content}</p>
-        <input type="checkbox" checked={done} />
+      <li className={todo.isDone ? "flexList done" : "flexList"}>
+        <p>{todo.content}</p>
+        <input
+          type="checkbox"
+          checked={todo.isDone}
+          onChange={() => completeTodo(todo.id)}
+        />
       </li>
     </>
   );

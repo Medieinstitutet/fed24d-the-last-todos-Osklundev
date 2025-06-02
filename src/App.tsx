@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import { TodoPresentation } from "./components/TodoPresentation";
 import { Todo } from "./models/Todo";
+import { Todos } from "./components/Todos";
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([
@@ -13,13 +13,21 @@ function App() {
   const addTodo = (t: Todo) => {
     setTodos([...todos, t]);
   };
+
+  const completeTodo = (id: number) => {
+    setTodos(
+      todos.map((t) => {
+        if (t.id === id) {
+          return { ...t, isDone: !t.isDone };
+        }
+        return t;
+      })
+    );
+  };
+
   return (
     <>
-      <ul>
-        {todos.map((t) => (
-          <TodoPresentation content={t.content} done={t.isDone} />
-        ))}
-      </ul>
+      <Todos todos={todos} completeTodo={completeTodo} />
     </>
   );
 }
