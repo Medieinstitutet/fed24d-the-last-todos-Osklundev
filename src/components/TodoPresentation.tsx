@@ -2,8 +2,8 @@ import type { Todo } from "../models/Todo";
 
 type TodoProps = {
   todo: Todo;
-  completeTodo: (id: number) => void;
-  removeTodo: (id: number) => void;
+  completeTodo: (id: string) => void;
+  removeTodo: (id: string) => void;
 };
 
 export const TodoPresentation = ({

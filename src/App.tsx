@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { Todo } from "./models/Todo";
 import { Todos } from "./components/Todos";
+import { AddTodo } from "./components/AddTodo";
+import { SortTodos } from "./components/SortTodos";
 
 function App() {
+  // Loads localstorage if there is one, otherwise default values.
   const loadTodos = (): Todo[] => {
     const saved = localStorage.getItem("todos");
     if (!saved) {
-      console.log("not saved");
+      console.log("no localstorage found");
 
       return [
         new Todo("Diska", true),
@@ -23,15 +26,16 @@ function App() {
   };
   const [todos, setTodos] = useState<Todo[]>(loadTodos);
 
+  // Updates Localstorage whenever state changes
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-  // const addTodo = (t: Todo) => {
-  //   setTodos([...todos, t]);
-  // };
+  const addTodo = (t: Todo) => {
+    setTodos([...todos, t]);
+  };
 
-  const completeTodo = (id: number) => {
+  const completeTodo = (id: string) => {
     setTodos(
       todos.map((t) => {
         if (t.id === id) {
@@ -42,12 +46,21 @@ function App() {
     );
   };
 
-  const removeTodo = (id: number) => {
+  const removeTodo = (id: string) => {
     setTodos(todos.filter((t) => t.id !== id));
+  };
+
+  const sortTodos = () => {
+    const sorted = [...todos].sort((a, b) =>
+      a.content.localeCompare(b.content, "sv")
+    );
+    setTodos(sorted);
   };
 
   return (
     <>
+      <AddTodo addTodo={addTodo} />
+      <SortTodos sortTodos={sortTodos} />
       <Todos
         todos={todos}
         completeTodo={completeTodo}

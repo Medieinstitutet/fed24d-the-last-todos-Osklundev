@@ -3,8 +3,8 @@ import { TodoPresentation } from "./TodoPresentation";
 
 type TodosProps = {
   todos: Todo[];
-  completeTodo: (id: number) => void;
-  removeTodo: (id: number) => void;
+  completeTodo: (id: string) => void;
+  removeTodo: (id: string) => void;
 };
 
 export const Todos = ({ todos, completeTodo, removeTodo }: TodosProps) => {

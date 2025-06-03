@@ -1,9 +1,9 @@
 export class Todo {
-  id: number;
+  id: string;
   content: string;
   isDone: boolean;
   constructor(content: string, isDone: boolean) {
-    this.id = Math.random();
+    this.id = crypto.randomUUID();
     this.content = content;
     this.isDone = isDone;
   }
