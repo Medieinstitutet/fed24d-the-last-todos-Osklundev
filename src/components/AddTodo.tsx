@@ -7,17 +7,21 @@ type AddTodoProps = {
 };
 
 export const AddTodo = ({ addTodo }: AddTodoProps) => {
-  const [todo, setTodo] = useState<Todo>(new Todo("", false));
+  const [content, setContent] = useState("");
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    addTodo(todo);
+    if (!content.trim()) return;
+    const newTodo = new Todo(content, false);
+    addTodo(newTodo);
+    setContent("");
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setTodo({ ...todo, [e.target.id]: e.target.value });
+    setContent(e.target.value);
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <TextField
@@ -25,7 +29,7 @@ export const AddTodo = ({ addTodo }: AddTodoProps) => {
         type="text"
         label="Todo"
         variant="filled"
-        value={todo.content}
+        value={content}
         onChange={handleChange}
         slotProps={{ htmlInput: { "data-testid": "…" } }}
       />
