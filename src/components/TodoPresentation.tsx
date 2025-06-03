@@ -23,7 +23,7 @@ export const TodoPresentation = ({
 }: TodoProps) => {
   return (
     <>
-      <ListItem>
+      <ListItem className={todo.isDone ? "done" : ""}>
         <ListItemAvatar>
           <Avatar>
             <AssignmentIcon />
