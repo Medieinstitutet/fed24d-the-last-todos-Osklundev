@@ -1,12 +1,14 @@
 import {
+  Avatar,
   Checkbox,
   IconButton,
   ListItem,
-  ListItemButton,
+  ListItemAvatar,
   ListItemText,
 } from "@mui/material";
 import type { Todo } from "../models/Todo";
 import DeleteIcon from "@mui/icons-material/Delete";
+import AssignmentIcon from "@mui/icons-material/Assignment";
 
 type TodoProps = {
   todo: Todo;
@@ -22,17 +24,23 @@ export const TodoPresentation = ({
   return (
     <>
       <ListItem>
+        <ListItemAvatar>
+          <Avatar>
+            <AssignmentIcon />
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText primary={todo.content} />
         <Checkbox
-          edge="start"
           checked={todo.isDone}
           onChange={() => completeTodo(todo.id)}
         />
-        <ListItemText>{todo.content}</ListItemText>
-        <ListItemButton onClick={() => removeTodo(todo.id)}>
-          <IconButton edge="end" aria-label="comments">
-            <DeleteIcon></DeleteIcon>
-          </IconButton>
-        </ListItemButton>
+        <IconButton
+          edge="end"
+          aria-label="delete"
+          onClick={() => removeTodo(todo.id)}
+        >
+          <DeleteIcon />
+        </IconButton>
       </ListItem>
     </>
   );

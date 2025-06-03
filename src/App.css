@@ -1,8 +1,40 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
   padding: 2rem;
-  text-align: center;
-  place-items: center;
-  background-color: darkgrey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
+form {
+  display: flex;
+  justify-content: center;
+}
+
+.sortContainer {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  right: 1rem;
+}
+
+.listContainer {
+  display: flex;
+  margin: auto 1rem auto 8rem;
+}
+
+.todoContainer {
+  background-color: grey;
+  padding: 0.5rem;
+  border: 1px solid black;
+}
+
+.title {
+  position: relative;
+  left: -15rem;
+  border-bottom: 4px solid black;
+  transform: rotate(-25deg);
+  color: #1976d2;
+  background-color: rgb(136, 136, 136);
+}
+

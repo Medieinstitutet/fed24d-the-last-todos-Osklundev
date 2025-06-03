@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 
 type SortTodosProps = {
   sortTodos: () => void;
@@ -7,9 +7,13 @@ type SortTodosProps = {
 
 export const SortTodos = ({ sortTodos, direction }: SortTodosProps) => {
   return (
-    <div>
-      <p>Sort:</p>
-      <Button onClick={sortTodos}>{direction === "asc" ? "A-Ö" : "Ö-A"}</Button>
+    <div className="sortContainer">
+      <Stack direction="row" spacing={2}>
+        <Typography variant="h6">Sort:</Typography>
+        <Button onClick={sortTodos}>
+          {direction === "asc" ? "A-Ö" : "Ö-A"}
+        </Button>
+      </Stack>
     </div>
   );
 };

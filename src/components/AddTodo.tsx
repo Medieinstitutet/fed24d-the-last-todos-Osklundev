@@ -25,12 +25,11 @@ export const AddTodo = ({ addTodo }: AddTodoProps) => {
         type="text"
         label="Todo"
         variant="filled"
-        color="secondary"
         value={todo.content}
         onChange={handleChange}
         slotProps={{ htmlInput: { "data-testid": "…" } }}
       />
-      <Button size="large" variant="outlined" onClick={handleSubmit}>
+      <Button size="large" variant="text" onClick={handleSubmit}>
         Add
       </Button>
     </form>

@@ -10,15 +10,17 @@ type TodosProps = {
 
 export const Todos = ({ todos, completeTodo, removeTodo }: TodosProps) => {
   return (
-    <List>
-      {todos.map((t) => (
-        <TodoPresentation
-          key={t.id}
-          todo={t}
-          completeTodo={completeTodo}
-          removeTodo={removeTodo}
-        />
-      ))}
-    </List>
+    <div className="listContainer">
+      <List>
+        {todos.map((t) => (
+          <TodoPresentation
+            key={t.id}
+            todo={t}
+            completeTodo={completeTodo}
+            removeTodo={removeTodo}
+          />
+        ))}
+      </List>
+    </div>
   );
 };

@@ -4,6 +4,7 @@ import { Todo } from "./models/Todo";
 import { Todos } from "./components/Todos";
 import { AddTodo } from "./components/AddTodo";
 import { SortTodos } from "./components/SortTodos";
+import { Container, Typography } from "@mui/material";
 
 function App() {
   // Loads localstorage if there is one, otherwise default values.
@@ -65,13 +66,18 @@ function App() {
 
   return (
     <>
-      <AddTodo addTodo={addTodo} />
-      <SortTodos sortTodos={sortTodos} direction={sortDirection} />
-      <Todos
-        todos={todos}
-        completeTodo={completeTodo}
-        removeTodo={removeTodo}
-      />
+      <Typography variant="h1" className="title">
+        OskLunDev's Todo List
+      </Typography>
+      <Container maxWidth="sm" className="todoContainer">
+        <AddTodo addTodo={addTodo} />
+        <SortTodos sortTodos={sortTodos} direction={sortDirection} />
+        <Todos
+          todos={todos}
+          completeTodo={completeTodo}
+          removeTodo={removeTodo}
+        />
+      </Container>
     </>
   );
 }
