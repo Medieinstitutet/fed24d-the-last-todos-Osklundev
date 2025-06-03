@@ -1,3 +1,4 @@
+import { List } from "@mui/material";
 import type { Todo } from "../models/Todo";
 import { TodoPresentation } from "./TodoPresentation";
 
@@ -9,7 +10,7 @@ type TodosProps = {
 
 export const Todos = ({ todos, completeTodo, removeTodo }: TodosProps) => {
   return (
-    <ul>
+    <List>
       {todos.map((t) => (
         <TodoPresentation
           key={t.id}
@@ -18,6 +19,6 @@ export const Todos = ({ todos, completeTodo, removeTodo }: TodosProps) => {
           removeTodo={removeTodo}
         />
       ))}
-    </ul>
+    </List>
   );
 };

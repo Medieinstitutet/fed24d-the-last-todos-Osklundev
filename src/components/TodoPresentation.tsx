@@ -1,4 +1,12 @@
+import {
+  Checkbox,
+  IconButton,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+} from "@mui/material";
 import type { Todo } from "../models/Todo";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 type TodoProps = {
   todo: Todo;
@@ -13,15 +21,19 @@ export const TodoPresentation = ({
 }: TodoProps) => {
   return (
     <>
-      <li className={todo.isDone ? "flexList done" : "flexList"}>
-        <p>{todo.content}</p>
-        <input
-          type="checkbox"
+      <ListItem>
+        <Checkbox
+          edge="start"
           checked={todo.isDone}
           onChange={() => completeTodo(todo.id)}
         />
-        <button onClick={() => removeTodo(todo.id)}>Remove</button>
-      </li>
+        <ListItemText>{todo.content}</ListItemText>
+        <ListItemButton onClick={() => removeTodo(todo.id)}>
+          <IconButton edge="end" aria-label="comments">
+            <DeleteIcon></DeleteIcon>
+          </IconButton>
+        </ListItemButton>
+      </ListItem>
     </>
   );
 };
