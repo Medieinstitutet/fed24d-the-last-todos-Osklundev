@@ -50,17 +50,23 @@ function App() {
     setTodos(todos.filter((t) => t.id !== id));
   };
 
+  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
   const sortTodos = () => {
-    const sorted = [...todos].sort((a, b) =>
-      a.content.localeCompare(b.content, "sv")
-    );
+    const sorted = [...todos].sort((a, b) => {
+      const compare = a.content.localeCompare(b.content, "sv", {
+        sensitivity: "base",
+      });
+      return sortDirection === "asc" ? compare : -compare;
+    });
+
     setTodos(sorted);
+    setSortDirection((prev) => (prev === "asc" ? "desc" : "asc"));
   };
 
   return (
     <>
       <AddTodo addTodo={addTodo} />
-      <SortTodos sortTodos={sortTodos} />
+      <SortTodos sortTodos={sortTodos} direction={sortDirection} />
       <Todos
         todos={todos}
         completeTodo={completeTodo}
