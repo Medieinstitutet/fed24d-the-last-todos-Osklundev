@@ -4,21 +4,19 @@ import { Todo } from "./models/Todo";
 import { Todos } from "./components/Todos";
 import { AddTodo } from "./components/AddTodo";
 import { SortTodos } from "./components/SortTodos";
+import { MadeByTab } from "./components/MadeByTab";
 
 function App() {
   // Loads localstorage if there is one, otherwise default values.
   const loadTodos = (): Todo[] => {
     const saved = localStorage.getItem("todos");
     if (!saved) {
-      console.log("no localstorage found");
-
       return [
         new Todo("Diska", true),
         new Todo("Städa", false),
         new Todo("Tvätta", true),
       ];
     }
-    console.log("loading localstorage");
 
     const parsed: Todo[] = JSON.parse(saved);
 
@@ -65,6 +63,7 @@ function App() {
 
   return (
     <>
+      <MadeByTab />
       <div className="todoContainer">
         <AddTodo addTodo={addTodo} />
         <SortTodos sortTodos={sortTodos} direction={sortDirection} />
