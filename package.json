@@ -1,12 +1,13 @@
 {
-  "homepage": "https://OskLunDev.github.io/fed24d-the-last-todos-Osklundev",
+  "homepage": "https://medieinstitutet.github.io/fed24d-the-last-todos-Osklundev",
   "name": "the-last-todos-template",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "predeploy": "vite build",
+    "deploy": "gh-pages -d dist",
+    "build": "vite build",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
